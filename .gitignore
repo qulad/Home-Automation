@@ -1,0 +1,6 @@
+espproje/.pio
+espproje/.vscode/.browse.c_cpp.db*
+espproje/.vscode/c_cpp_properties.json
+espproje/.vscode/launch.json
+espproje/.vscode/ipch
+esp-dos
