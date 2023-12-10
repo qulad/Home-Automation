@@ -4,7 +4,7 @@
 
 uint32_t level = 0;
 
-esp_err_t outlet_init()
+esp_err_t digital_io_init()
 {
     gpio_config_t io_conf = {};
 
@@ -17,26 +17,26 @@ esp_err_t outlet_init()
     return gpio_config(&io_conf);
 }
 
-uint32_t outlet_value_read()
+uint32_t digital_io_value_read()
 {
     return level;
 }
 
-esp_err_t outlet_value_write_on()
+esp_err_t digital_io_value_write_on()
 {
     level = 1;
 
     return gpio_set_level(GPIO_OUTPUT_IO, level);
 }
 
-esp_err_t outlet_value_write_off()
+esp_err_t digital_io_value_write_off()
 {
     level = 0;
 
     return gpio_set_level(GPIO_OUTPUT_IO, level);
 }
 
-esp_err_t outlet_value_write_toggle()
+esp_err_t digital_io_value_write_toggle()
 {
     level = !level;
 
