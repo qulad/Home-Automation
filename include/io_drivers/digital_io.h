@@ -1,4 +1,5 @@
 #include "driver/gpio.h"
+#include "esp_err.h"
 
 #define GPIO_OUTPUT_IO GPIO_NUM_2
 
@@ -14,7 +15,7 @@ esp_err_t digital_io_init()
     io_conf.pull_down_en = GPIO_PULLDOWN_DISABLE;
     io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
 
-    return gpio_config(&io_conf);
+    ESP_ERROR_CHECK(gpio_config(&io_conf));
 }
 
 uint32_t digital_io_value_read()
@@ -26,19 +27,19 @@ esp_err_t digital_io_value_write_on()
 {
     level = 1;
 
-    return gpio_set_level(GPIO_OUTPUT_IO, level);
+    ESP_ERROR_CHECK(gpio_set_level(GPIO_OUTPUT_IO, level));
 }
 
 esp_err_t digital_io_value_write_off()
 {
     level = 0;
 
-    return gpio_set_level(GPIO_OUTPUT_IO, level);
+    ESP_ERROR_CHECK(gpio_set_level(GPIO_OUTPUT_IO, level));
 }
 
 esp_err_t digital_io_value_write_toggle()
 {
     level = !level;
 
-    return gpio_set_level(GPIO_OUTPUT_IO, level);
+    ESP_ERROR_CHECK(gpio_set_level(GPIO_OUTPUT_IO, level));
 }

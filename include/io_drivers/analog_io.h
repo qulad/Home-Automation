@@ -1,4 +1,5 @@
 #include "driver/gpio.h"
+#include "esp_err.h"
 
 #define RED GPIO_NUM_3
 #define GREEN GPIO_NUM_5
@@ -18,21 +19,15 @@ esp_err_t analog_io_init()
     io_conf.pull_down_en = GPIO_PULLDOWN_DISABLE;
     io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
 
-    if (gpio_config(&io_conf) == ESP_ERR_INVALID_ARG)
-    {
-        return ESP_ERR_INVALID_ARG;
-    }
+    ESP_ERROR_CHECK(gpio_config(&io_conf));
 
     io_conf.pin_bit_mask = 1ULL << GREEN;
 
-    if (gpio_config(&io_conf) == ESP_ERR_INVALID_ARG)
-    {
-        return ESP_ERR_INVALID_ARG;
-    }
+    ESP_ERROR_CHECK(gpio_config(&io_conf));
 
     io_conf.pin_bit_mask = 1ULL << BLUE;
 
-    return gpio_config(&io_conf);
+    ESP_ERROR_CHECK(gpio_config(&io_conf));
 }
 
 uint32_t analog_io_value_read_red()
@@ -59,7 +54,7 @@ esp_err_t analog_io_value_write_red(uint32_t value)
 
     red = value;
 
-    return gpio_set_level(RED, red);
+    ESP_ERROR_CHECK(gpio_set_level(RED, red));
 }
 
 esp_err_t analog_io_value_write_green(uint32_t value)
@@ -71,7 +66,7 @@ esp_err_t analog_io_value_write_green(uint32_t value)
 
     green = value;
 
-    return gpio_set_level(GREEN, green);
+    ESP_ERROR_CHECK(gpio_set_level(GREEN, green));
 }
 
 esp_err_t analog_io_value_write_blue(uint32_t value)
@@ -83,5 +78,5 @@ esp_err_t analog_io_value_write_blue(uint32_t value)
 
     blue = value;
 
-    return gpio_set_level(BLUE, blue);
+    ESP_ERROR_CHECK(gpio_set_level(BLUE, blue));
 }
