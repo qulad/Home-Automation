@@ -8,7 +8,7 @@ uint32_t red = 0;
 uint32_t green = 0;
 uint32_t blue = 0;
 
-esp_err_t rgb_lamp_init()
+esp_err_t analog_io_init()
 {
     gpio_config_t io_conf = {};
 
@@ -35,22 +35,22 @@ esp_err_t rgb_lamp_init()
     return gpio_config(&io_conf);
 }
 
-uint32_t rgb_lamp_value_read_red()
+uint32_t analog_io_value_read_red()
 {
     return red;
 }
 
-uint32_t rgb_lamp_value_read_green()
+uint32_t analog_io_value_read_green()
 {
     return green;
 }
 
-uint32_t rgb_lamp_value_read_blue()
+uint32_t analog_io_value_read_blue()
 {
     return blue;
 }
 
-esp_err_t rgb_lamp_value_write_red(uint32_t value)
+esp_err_t analog_io_value_write_red(uint32_t value)
 {
     if (value > 255)
     {
@@ -62,7 +62,7 @@ esp_err_t rgb_lamp_value_write_red(uint32_t value)
     return gpio_set_level(RED, red);
 }
 
-esp_err_t rgb_lamp_value_write_green(uint32_t value)
+esp_err_t analog_io_value_write_green(uint32_t value)
 {
     if (value > 255)
     {
@@ -74,7 +74,7 @@ esp_err_t rgb_lamp_value_write_green(uint32_t value)
     return gpio_set_level(GREEN, green);
 }
 
-esp_err_t rgb_lamp_value_write_blue(uint32_t value)
+esp_err_t analog_io_value_write_blue(uint32_t value)
 {
     if (value > 255)
     {
