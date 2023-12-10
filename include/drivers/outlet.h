@@ -14,7 +14,7 @@ esp_err_t outlet_init()
     io_conf.pull_down_en = GPIO_PULLDOWN_DISABLE;
     io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
 
-    gpio_config(&io_conf);
+    return gpio_config(&io_conf);
 }
 
 uint32_t outlet_value_read()
