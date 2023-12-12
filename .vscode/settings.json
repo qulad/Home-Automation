@@ -1,3 +1,5 @@
 {
-    "sonarlint.pathToCompileCommands": "${workspaceFolder}\\.pio\\build\\esp32-c3-devkitm-1\\bootloader\\compile_commands.json"
+    "sonarlint.pathToCompileCommands": "${workspaceFolder}\\.pio\\build\\esp32-c3-devkitm-1\\bootloader\\compile_commands.json",
+    "idf.adapterTargetName": "esp32c3",
+    "C_Cpp.errorSquiggles": "enabled"
 }
