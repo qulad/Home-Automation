@@ -16,7 +16,7 @@ static void root_task(void *arg)
     mwifi_data_type_t data_type      = {};
 
     MDF_LOGI("Root is running");
-
+    
     for (int i = 0;; ++i) {
         if (!mwifi_is_started()) {
             vTaskDelay(500 / portTICK_RATE_MS);
@@ -50,7 +50,6 @@ static void node_read_task(void *arg)
     uint8_t src_addr[MWIFI_ADDR_LEN] = {0x0};
 
     MDF_LOGI("Note read task is running");
-
     for (;;) {
         if (!mwifi_is_connected()) {
             vTaskDelay(500 / portTICK_RATE_MS);
@@ -204,7 +203,8 @@ void example_main_function()
     
     config.channel   = CONFIG_MESH_CHANNEL;
     memcpy((char*)config.mesh_id, CONFIG_MESH_ID, sizeof(CONFIG_MESH_ID) - 1);
-    config.mesh_type = CONFIG_DEVICE_TYPE;
+    // Root or node selection manual settings
+    //config.mesh_type = CONFIG_DEVICE_TYPE;
 
     /**
      * @brief Set the log level for serial port printing.
@@ -245,5 +245,5 @@ void setup() {
 }
 void loop() {
     /* nothing, all is done in tasks */
-    delay(1000);
+    delay(10000);
 }
